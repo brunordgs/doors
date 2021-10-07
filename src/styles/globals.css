@@ -18,5 +18,6 @@ a {
 }
 
 * {
+	/* By default, tailwindcss use "border-box" property, but I defined it to prevent inconsistences */
 	box-sizing: border-box;
 }

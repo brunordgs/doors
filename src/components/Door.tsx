@@ -1,6 +1,6 @@
 import { classNames } from '../utilities/classes';
 
-export default function Door({ selected }: { selected: boolean }) {
+export default function Door({ selected }: { selected?: boolean }) {
 	return (
 		<div className="relative flex flex-col items-center w-[200px] h-[310px]">
 			<div

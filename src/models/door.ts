@@ -1,4 +1,4 @@
-export default class Door {
+export default class DoorModel {
 	#number: number;
 	#hasGift: boolean;
 	#selected: boolean;
@@ -29,16 +29,16 @@ export default class Door {
 
 	toggleSelect() {
 		const selected = !this.selected;
-		return new Door(this.number, this.hasGift, selected, this.opened);
+		return new DoorModel(this.number, this.hasGift, selected, this.opened);
 	}
 
 	toggleOpen() {
 		const opened = true;
-		return new Door(this.number, this.hasGift, this.selected, opened);
+		return new DoorModel(this.number, this.hasGift, this.selected, opened);
 	}
 
 	unselect() {
 		const selected = false;
-		return new Door(this.number, this.hasGift, selected, this.opened);
+		return new DoorModel(this.number, this.hasGift, selected, this.opened);
 	}
 }

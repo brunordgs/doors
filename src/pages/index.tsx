@@ -10,7 +10,7 @@ export default function Home() {
 			return (
 				<Door
 					key={door.number}
-					value={door}
+					door={door}
 					onChange={(newDoor) => {
 						setDoors(updateDoors(doors, newDoor));
 					}}

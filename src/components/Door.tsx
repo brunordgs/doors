@@ -1,9 +1,10 @@
 import { FormEvent } from 'react';
 import DoorModel from '../models/door';
 import { classNames } from '../utilities/classes';
+import Gift from './Gift';
 
 interface Props {
-	value: DoorModel;
+	door: DoorModel;
 	onChange(newDoor: DoorModel): void;
 	selected?: {
 		background: string;
@@ -11,14 +12,14 @@ interface Props {
 	};
 }
 
-export default function Door({ value, onChange }: Props) {
+export default function Door({ door, onChange }: Props) {
 	const selected = {
-		background: value.selected && !value.opened ? 'bg-yellow-500' : 'bg-yellow-900',
-		border: value.selected && !value.opened ? 'border-yellow-500' : 'border-yellow-800',
+		background: door.selected && !door.opened ? 'bg-yellow-500' : 'bg-yellow-900',
+		border: door.selected && !door.opened ? 'border-yellow-500' : 'border-yellow-800',
 	};
 
 	function toggleSelect() {
-		onChange(value.toggleSelect());
+		onChange(door.toggleSelect());
 	}
 
 	return (
@@ -28,10 +29,14 @@ export default function Door({ value, onChange }: Props) {
 			<div
 				className={classNames(
 					selected.border,
-					'flex flex-grow border-l-[5px] border-t-[5px] border-r-[5px] w-[90%] bg-[#0005]',
+					'flex flex-col-reverse flex-grow border-l-[5px] border-t-[5px] border-r-[5px] w-[90%] bg-[#0005]',
 				)}
 			>
-				{!value.opened && <RenderDoor value={value} onChange={onChange} selected={selected} />}
+				{door.closed ? (
+					<RenderDoor door={door} onChange={onChange} selected={selected} />
+				) : (
+					door.hasGift && <Gift />
+				)}
 			</div>
 
 			{/* Floor */}
@@ -40,18 +45,18 @@ export default function Door({ value, onChange }: Props) {
 	);
 }
 
-function RenderDoor({ value, onChange, selected }: Props) {
+function RenderDoor({ door, onChange, selected }: Props) {
 	function openHandler(e: FormEvent) {
 		e.stopPropagation();
-		onChange(value.toggleOpen());
+		onChange(door.toggleOpen());
 	}
 
 	return (
 		// Door
 		<div className="flex flex-col items-center flex-grow p-[15px] bg-yellow-700">
 			{/* Number */}
-			<div className={classNames(value.selected ? 'text-yellow-500' : 'text-white', 'text-5xl')}>
-				{value.number}
+			<div className={classNames(door.selected ? 'text-yellow-500' : 'text-white', 'text-5xl')}>
+				{door.number}
 			</div>
 
 			{/* Knob */}

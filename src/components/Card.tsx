@@ -9,7 +9,7 @@ type Props = {
 export default function Card({ backgroundColor, children, className }: Props) {
 	return (
 		<div
-			className={classNames('flex w-[300px] h-[300px] text-white m-1 text-[2rem] p-5', className)}
+			className={classNames('flex w-[300px] h-[300px] text-white m-1 text-[2rem] p-5 rounded-md', className)}
 			style={{ background: backgroundColor ?? '#fff' }}
 		>
 			{children}

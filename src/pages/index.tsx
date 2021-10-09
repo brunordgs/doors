@@ -6,8 +6,9 @@ export default function Home() {
 	const [firstDoor, setFirstDoor] = useState(new DoorModel(1));
 
 	return (
-		<div className="flex">
-			<Door door={firstDoor} />
+		<div className="flex flex-col">
+			<input type="text" />
+			<Door value={firstDoor} onChange={(newDoor) => console.log(newDoor)} />
 		</div>
 	);
 }

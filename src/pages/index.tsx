@@ -1,23 +1,26 @@
-import { useState } from 'react';
-import Door from '../components/Door';
-import { createDoors, updateDoors } from '../utilities/doors';
+import Card from '../components/Card';
+import Link from 'next/link';
 
-export default function Home() {
-	const [doors, setDoors] = useState(createDoors(3, 2));
+export default function Form() {
+	return (
+		<div className="flex items-center justify-center h-screen">
+			<div>
+				<Card backgroundColor="#c0392c">
+					<h1 className="text-6xl font-bold leading-tight">Monty Hall</h1>
+				</Card>
+				<Card></Card>
+			</div>
 
-	function renderDoors() {
-		return doors.map((door) => {
-			return (
-				<Door
-					key={door.number}
-					door={door}
-					onChange={(newDoor) => {
-						setDoors(updateDoors(doors, newDoor));
-					}}
-				/>
-			);
-		});
-	}
-
-	return <div className="flex gap-4">{renderDoors()}</div>;
+			<div>
+				<Card></Card>
+				<Card backgroundColor="#28a085" className="p-0">
+					<Link href="#">
+						<a className="flex-1 p-5 text-6xl font-bold leading-tight flex items-center justify-center">
+							Start
+						</a>
+					</Link>
+				</Card>
+			</div>
+		</div>
+	);
 }

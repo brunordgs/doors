@@ -14,8 +14,8 @@ interface Props {
 
 export default function Door({ door, onChange }: Props) {
 	const selected = {
-		background: door.selected && !door.opened ? 'bg-yellow-500' : 'bg-yellow-900',
-		border: door.selected && !door.opened ? 'border-yellow-500' : 'border-yellow-800',
+		background: door.selected && door.closed ? 'bg-yellow-500' : 'bg-yellow-900',
+		border: door.selected && door.closed ? 'border-yellow-500' : 'border-yellow-800',
 	};
 
 	function toggleSelect() {
@@ -24,7 +24,7 @@ export default function Door({ door, onChange }: Props) {
 
 	return (
 		// Area
-		<div className="relative flex flex-col items-center w-[200px] h-[310px]" onClick={toggleSelect}>
+		<div className="relative flex flex-col items-center w-[200px] h-[310px] cursor-pointer" onClick={toggleSelect}>
 			{/* Structure */}
 			<div
 				className={classNames(

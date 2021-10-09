@@ -1,11 +1,11 @@
 import DoorModel from '../models/door';
 
-export function createDoors(quantity: number, selected: number): DoorModel[] {
+export function createDoors(quantity: number, doorWithGift: number): DoorModel[] {
 	return Array.from({ length: quantity }, (_, i) => {
-		const number = i + 1;
-		const hasGift = number === selected;
+		const doorNumber = i + 1;
+		const hasGift = doorNumber === doorWithGift;
 
-		return new DoorModel(number, hasGift);
+		return new DoorModel(doorNumber, hasGift);
 	});
 }
 

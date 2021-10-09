@@ -7,8 +7,7 @@ export default function Home() {
 
 	return (
 		<div className="flex flex-col">
-			<input type="text" />
-			<Door value={firstDoor} onChange={(newDoor) => console.log(newDoor)} />
+			<Door value={firstDoor} onChange={(newDoor) => setFirstDoor(newDoor)} />
 		</div>
 	);
 }

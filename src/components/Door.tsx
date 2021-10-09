@@ -1,4 +1,4 @@
-import { FormEvent } from 'react';
+import { useState } from 'react';
 import DoorModel from '../models/door';
 import { classNames } from '../utilities/classes';
 
@@ -8,7 +8,9 @@ interface Props {
 }
 
 export default function Door({ value, onChange }: Props) {
-	function toggleSelect(e: FormEvent) {
+	const [selected, isSelected] = useState(false);
+
+	function toggleSelect() {
 		onChange(value.toggleSelect());
 	}
 
